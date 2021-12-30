@@ -1,0 +1,13 @@
+{% extends 'Layout.html' %}
+
+
+{% block content %}
+<form action="registeruser" method="post">
+    {% csrf_token %}
+    <input name="name" type="text" placeholder="ENTER NAME">
+
+    <input name="password" type="password" placeholder="ENTER PASSWORD">
+    <input name="phone" type="text" placeholder="ENTER Phone">
+    <input type="submit" value="SUBMIT DATA">
+</form>
+{% endblock content %}

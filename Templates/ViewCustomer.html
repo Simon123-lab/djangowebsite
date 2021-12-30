@@ -1,0 +1,73 @@
+{% extends 'Layout.html' %}
+{% block content %}
+<center>
+    <h2>USER DATA FETCH</h2>
+    <br><br>
+</center>
+    <div class="">
+<center>
+        <form action="search" method="post">
+
+        {% csrf_token %}
+            <input type="text" placeholder="Enter Name" name="search">
+            <input type="submit" value="Search Data">
+
+        </form>
+</center>
+     <br> <br>
+
+        <table style="margin-left: 200px" class="table-striped" border="1" >
+        <thead>
+            <tr>
+
+                <th scope="col" ><label style="width:200px;text-align:center;">Customer Name</label></th>
+                <th scope="col"><label style="width:200px;text-align:center;">Phone Number</label></th>
+                 <th scope="col"><label style="width:200px;text-align:center;">Address</label></th>
+                 <th scope="col"><label style="width:200px;text-align:center;">Image</label></th>
+                <th scope="col"><label style="width:200px;text-align:center;">Action</label></th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for list in data %}
+            <tr>
+             <td>
+            {{list.name}}
+                </td>
+                <td>
+                    {{list.phone}}
+                </td>
+              <td> {{list.address}}
+
+                </td>
+
+              <td>
+           <img src=" {{ list.image_data }}" style="width: 150px;height: 100px" alt="No Image"/>
+                </td>
+
+         <td>
+                    <a href="prod_del/{{list.id}}" class="btn btn-danger">Delete</a>
+                    <a href="prod_upd/{{data.product_id}}" class="btn btn-primary">Update</a>
+                </td>
+            </tr>
+  </tbody>
+        {% endfor %}
+
+    </table>
+    </div>
+    <style>
+        td {
+          text-align: center;
+        }
+        .table-earnings {
+          background: #F3F5F6;
+        }
+        .table {
+          width: 100%;
+          display: block;
+        }
+        .con {
+            overflow-x: scroll;
+        }
+    </style>
+{% endblock content %}
